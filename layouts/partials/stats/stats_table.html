@@ -1,0 +1,50 @@
+{{ $posts := where site.RegularPages "Type" "posts" }}
+
+{{ $scratch := newScratch }}
+{{ $scratch.Set "longCount" 0 }}
+{{ range $posts }}
+    {{ $scratch.Add "wordcount" .WordCount }}
+    {{ if ge .WordCount ($scratch.Get "longCount") }}
+        {{ $scratch.Set "longestPost" . }}
+        {{ $scratch.Set "longCount" .WordCount }}
+    {{ end }}
+{{ end }}
+
+{{ $postCount :=  len ($posts) }}
+{{ $wordCount := $scratch.Get "wordcount" }}
+{{ $avgPostLength := div $wordCount $postCount }}
+
+<table class="table">
+    <tr>
+        <td width="40%">Total Posts Published</td>
+        <td width="60%">{{ $postCount | lang.NumFmt 0 }}</td>
+    </tr>
+    <tr>
+        <td>Total Words Written</td>
+        <td>{{ $wordCount | lang.NumFmt 0 }}{{ if gt $wordCount 40000 }} (that's almost {{ (div $wordCount 40000) | lang.NumFmt 0 }} novellas){{ end }}</td>
+    </tr>
+    <tr>
+        <td>Average Words per Post</td>
+        <td>{{ $avgPostLength | lang.NumFmt 0 }}</td>
+    </tr>
+    <tr>
+        <td>First Post Published</td>
+        <td>
+            {{ range last 1 $posts }}
+                {{ if .Title }}<a href="{{ .Permalink }}">{{ .Title }}</a> published on {{ .Date.Format "2006-01-02" }}
+                {{ else }}<a href="{{ .Permalink }}">Micro Post</a> published on {{ .Date.Format "2006-01-02" }} 
+                {{ end }}
+            {{ end }}
+        </td>
+    </tr>
+    <tr>
+        <td>Longest Post Published</td>
+        <td>
+            {{ with $scratch.Get "longestPost" }}
+                {{ if .Title }}<a href="{{ .Permalink }}">{{ .Title }}</a> with {{ .WordCount }} words
+                {{ else }}<a href="{{ .Permalink }}">Micro Post</a> with {{ .WordCount }} words
+                {{ end }}
+            {{ end }}
+        </td>
+    </tr>
+</table>
