@@ -1,0 +1,17 @@
+{{- define "title" }}
+    {{- T "pageNotFound" | printf "404 %v" }} - {{ .Site.Title -}}
+{{- end -}}
+
+{{- define "content" -}}
+    <div class="page" id="content-404">
+        <h1 class="error-title">{{- T "pageNotFoundTitle" -}}</h1>
+        <p class="error-text">
+            {{- T "pageNotFoundTexto" -}}
+        </p>
+        <p class="error-text">
+            <a href= "{{ .Site.BaseURL }}" class="error-link">{{- T "pageNotFoundHomepage" -}}</a>
+            &nbsp;{{- T "or" -}}&nbsp;
+            <a href= "mailto:{{ .Site.Author.email }}" class="error-link">{{- T "pageNotFoundWarn" -}}&nbsp;</a>
+        </p>
+    </div>
+{{- end -}}

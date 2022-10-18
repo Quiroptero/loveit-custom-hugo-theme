@@ -12,12 +12,12 @@ other = "Ver comentarios"
 
 # === Post ===
 [posts]
-other = "Publicaciones"
+other = "Artículos"
 # === Post ===
 
 # === Taxonomy ===
 [allSome]
-other = "Todas las {{ .Some }}"
+other = "Todos los {{ .Some }}"
 
 [tag]
 other = "Etiqueta"
@@ -148,8 +148,17 @@ other = "Leer más"
 [pageNotFound]
 other = "Página no encontrada"
 
-[pageNotFoundText]
-other = "La página que estás buscando no existe. Lo siento."
+[pageNotFoundTitle]
+other = "¡No encontrado!"
+
+[pageNotFoundTexto]
+other = "La página que estás buscando no existe o migró a otro lugar."
+
+[pageNotFoundHomepage]
+other = "Puedes ir de vuelta al inicio"
+
+[pageNotFoundWarn]
+other = "hacérmelo saber."
 # === 404.html ===
 
 # === shortcodes/admonition.html ===
@@ -200,3 +209,8 @@ other = "MODIFICADO"
 [deleted]
 other = "ELIMINADO"
 # === shortcodes/version.html ===
+
+# === misc ===
+[or]
+other = "o"
+# === misc ===

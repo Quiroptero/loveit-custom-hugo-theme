@@ -1,0 +1,22 @@
+content-404 {
+  @include transform(translateY(30vh));
+  text-align: center;
+}
+
+.error-title {
+  font-size: 3.2rem;
+  line-height: 3rem;
+  @include transform(translateY(30vh));
+  text-align: center;
+}
+
+.error-text {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  @include transform(translateY(30vh));
+  text-align: center;
+}
+
+.error-link {
+  text-decoration: underline;
+}
