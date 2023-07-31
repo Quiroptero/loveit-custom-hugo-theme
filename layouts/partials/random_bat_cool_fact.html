@@ -31,8 +31,14 @@
       }
     }
 
-    // Event listener for the "Random Link" button
-    document.getElementById('random-bat-cool-fact').addEventListener('click', function(event) {
+    // Event listener for the "Random Bat Cool Fact - Desktop" button
+    document.getElementById('random-bat-cool-fact-desktop').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default link behavior
+      getRandomBatCoolFact();
+    });
+
+    // Event listener for the "Random Bat Cool Fact - Mobile" button
+    document.getElementById('random-bat-cool-fact-mobile').addEventListener('click', function(event) {
       event.preventDefault(); // Prevent the default link behavior
       getRandomBatCoolFact();
     });
