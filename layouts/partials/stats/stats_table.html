@@ -16,34 +16,30 @@
 
 <table class="table">
     <tr>
-        <td width="40%">Total Posts Published</td>
+        <td width="40%">Total posts published</td>
         <td width="60%">{{ $postCount | lang.NumFmt 0 }}</td>
     </tr>
     <tr>
-        <td>Total Words Written</td>
+        <td>Total words written</td>
         <td>{{ $wordCount | lang.NumFmt 0 }}{{ if gt $wordCount 40000 }} (that's almost {{ (div $wordCount 40000) | lang.NumFmt 0 }} novellas){{ end }}</td>
     </tr>
     <tr>
-        <td>Average Words per Post</td>
+        <td>Average words per post</td>
         <td>{{ $avgPostLength | lang.NumFmt 0 }}</td>
     </tr>
     <tr>
-        <td>First Post Published</td>
+        <td>First post published</td>
         <td>
             {{ range last 1 $posts }}
-                {{ if .Title }}<a href="{{ .Permalink }}">{{ .Title }}</a> published on {{ .Date.Format "2006-01-02" }}
-                {{ else }}<a href="{{ .Permalink }}">Micro Post</a> published on {{ .Date.Format "2006-01-02" }} 
-                {{ end }}
+                <a href="{{ .Permalink }}">{{ .Title }}</a>, published on {{ .Date.Format "2006-01-02" }}
             {{ end }}
         </td>
     </tr>
     <tr>
-        <td>Longest Post Published</td>
+        <td>Longest post published</td>
         <td>
             {{ with $scratch.Get "longestPost" }}
-                {{ if .Title }}<a href="{{ .Permalink }}">{{ .Title }}</a> with {{ .WordCount }} words
-                {{ else }}<a href="{{ .Permalink }}">Micro Post</a> with {{ .WordCount }} words
-                {{ end }}
+                <a href="{{ .Permalink }}">{{ .Title }}</a>, with {{ .WordCount }} words
             {{ end }}
         </td>
     </tr>
